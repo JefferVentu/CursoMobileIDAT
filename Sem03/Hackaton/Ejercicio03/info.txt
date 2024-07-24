@@ -1,0 +1,5 @@
+Ejercicio 03
+- Crear un array con los 10 primeros numeros primos 
+- Crear un array de pares del primer array pero no usar bucles.
+- Crear un array de impares del primer array pero no usar bucles 
+- Mostrar en console los arrays
