@@ -1,0 +1,3 @@
+Ejercicio 01
+- Ingresa 5 precios por prompt mostrar lista de precios pero cada precio debe tener un descuento del 30% en la nueva lista
+- Mostrar en consola

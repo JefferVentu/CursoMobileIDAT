@@ -1,0 +1,4 @@
+Ejercicio 02:
+- Crear los meses del año en un array
+- Mostrar como resulta la lista de los meses pero los meses que tiene el invierno en perú en mayuscula
+- Mostrar los resultados en console table
