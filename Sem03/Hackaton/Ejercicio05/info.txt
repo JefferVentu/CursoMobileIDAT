@@ -1,4 +1,4 @@
 Ejercicio 5:
-- Crear una lista de objetos de 5 jugadores de la selección de perú en un array
-- La lista de objet del jugador debe tener su nombre y su numero de camiseta
-- Mostrar el jugador con el número más alto y el menor número del array de objetos de los jugadores
+- Crear una lista de 5 jugadores de la selección de perú en un array
+- La lista debe tener su nombre y su numero de camiseta
+- Mostrar el jugador con el número más alto y el menor número.

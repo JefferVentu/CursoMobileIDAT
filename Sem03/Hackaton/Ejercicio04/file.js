@@ -5,6 +5,6 @@ console.log(gaseosas);
 
 gaseosas.forEach(function(valor, indice, lista){
     lista[indice] = "Producto " + valor + " precio: "+precio[indice];
-})
+});
 
 console.log(gaseosas);
