@@ -1,11 +1,13 @@
-const callApi = () => {
+const callApi = async() => {
     try{
-        const response = fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0');
-        console.log(response);
-    } catch (error){
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=5&offset=0');
+
+        const data = await response.json();
+        console.log(data);
+    }
+    catch (error){
         console.log(error);
     }
-
 }   
 
 callApi();
