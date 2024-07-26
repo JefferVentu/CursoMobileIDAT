@@ -1,0 +1,3 @@
+Crear proyecto react
+npx create-react-app@latest (nombre del proyecto)
+
