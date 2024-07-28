@@ -6,8 +6,8 @@ const App = () => {
   return (
     <>
       <div className='flex justify-center'>
-       <div className='text-center'><Navizq/></div>
-       <div className='text-center'><Navder/></div>
+       <div className='text-center w-[30%]'><Navizq/></div>
+       <div className='text-center w-[30%]'><Navder/></div>
       </div>
     </>
   )

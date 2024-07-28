@@ -14,7 +14,13 @@ const Navizq = () => {
       <button className='m-4 bg-gradient-to-r from-orange-400 via-red-500 to-purple-600 text-white py-2 px-14 rounded'>INGRESAR</button>
       
       <br />
-      
+      <a href='' className='text-gray-500' >¿Olvidó contraseña?</a>
+
+      <br />
+      <p className='py-3 px-3'>
+        ¿No tienes cuenta?
+        <button className='border rounded m-4 py-2 px-6 text-orange-600 border-gradient-to-r from-orange-400 via-red-500 to-purple-600'>Nuevo</button>
+      </p>
     </div>
   )
 }
