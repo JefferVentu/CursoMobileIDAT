@@ -8,7 +8,7 @@ const App = () => {
     <>
       {/* /* <h1 className='text-3x1 text-red-700 font-extrabold underline'>Hola mundo</h1> */}
       <NavBar/>
-      <main>
+      <main className='flex justify-between'>
         <Section/>
         <Figure></Figure>
       </main>
