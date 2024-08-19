@@ -1,0 +1,4 @@
+requisitos para utilizar el CLI de react native:
+- Node.js
+- Android studio
+- jdk

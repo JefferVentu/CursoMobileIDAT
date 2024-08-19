@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+    background: #921d63;
+}
+
+.todo-container{
+    background: #1bd7dd;
+    width: 40Vw;
+    margin: 10em auto;
+    border-radius: 15px;
+    padding: 20px 10 px;
+    border: 5px solid rgb(240,240,230);
+}
+
+.header{
+    margin: 0.5em;
+    font-size: 30px;
+    text-align: center;
+}
+
+.task{
+    border: 2px solid white;
+    border-radius: 30px;
+    padding: 1em;
+    margin: 0.5em;
+}
+
+.task button{
+    background: rgb(43, 117, 228);
+    border-radius: 5px;
+    margin: 0px 5px;
+    padding: 5px 5px;
+    border: none;
+    float: right;
+}
+
+.create-task{
+    margin: 20px 15px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 25px;
+}
