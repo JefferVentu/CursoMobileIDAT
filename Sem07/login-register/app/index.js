@@ -6,7 +6,7 @@ import RegisterScreen from '../screens/RegisterScreen'
 export default function index() {
   return (
     <View>
-      <LoginScreen/>
+      {/* <LoginScreen/> */}
       <RegisterScreen/>
     </View>
   )
