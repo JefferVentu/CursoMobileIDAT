@@ -1,0 +1,288 @@
+// import { View, Text, SafeAreaView, FlatList, Image, StyleSheet, TouchableOpacity, StatusBar} from 'react-native'
+// import React, {useState} from 'react'
+
+// const data = [
+//     {
+//         id:1, 
+//         pais: 'Argentina', 
+//         imagen:'https://cdn.icon-icons.com/icons2/1694/PNG/512/arargentinaflag_111670.png', 
+//         grupo: 'GRUPO A'
+//     },
+//     {
+//         id:2, 
+//         pais: 'Colombia', 
+//         imagen:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUPzCm02Svv-s0bKWJ4__BUIxde6hVDJ9vCg&s', 
+//         grupo: 'GRUPO B'
+//     },
+//     {
+//         id:3, 
+//         pais: 'Uruguay', 
+//         imagen:'https://static.vecteezy.com/system/resources/previews/002/450/300/non_2x/illustration-of-uruguay-flag-free-vector.jpg', 
+//         grupo: 'GRUPO C'
+//     },
+//     {
+//         id:4, 
+//         pais: 'Brasil', 
+//         imagen:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKcyPL6fJxG_xZ6zGtb7w5w-qgC4XWBFhHCg&s', 
+//         grupo: 'GRUPO D'
+//     },
+//     {
+//         id:5, 
+//         pais: 'Peru', 
+//         imagen:'https://static.magflags.net/media/catalog/product/cache/b756e98438727cbd4415a0b646d85461/P/E/PE-1x1.5.png', 
+//         grupo: 'GRUPO A'
+//     },
+// ];
+
+// const Item = ({item, onPress, backgroundColor, textColor}) =>{
+//     <TouchableOpacity onPress={onPress} style={[styles.item, {backgroundColor}]}>
+//         <Image style={styles.imagenPais} source={{uri:item.imagen}}/>
+//         <View>
+//             <Text style={[styles.title, {color: textColor}]}>{item.pais}</Text>
+//             <Text style={[styles.titleGrupo]}>{item.grupo}</Text>
+//         </View>
+//     </TouchableOpacity>
+// }
+
+// const Header = () =>{
+//     return (
+//         <View style={styles.header}>
+//             <Text style={styles.headerText}>COPA AMERICA 2024</Text>
+//         </View>
+//     )
+// }
+
+// const Footer = () =>{
+//     return(
+//         <View style={styles.footer}>
+//             <Text style={styles.footerText}>Hackaton 7</Text>
+//         </View>
+//     )
+// }
+
+// const App = () => {
+//     const [selectedId, setSelectedId] = useState();
+//     const renderItem =({item}) =>{
+//     const backgroundColor = item.id === selectedId ? '#7e7979' : '#edeaea';
+//     const color = item.id === selectedId ? 'white' : 'black';
+
+//     return(
+//         <Item item={item}
+//         onPress={() => setSelectedId(item.id)}
+//         backgroundColor={backgroundColor}
+//         textColor={color}/>
+//     )
+    
+//     }
+//     return (
+//         <SafeAreaView style={styles.container}>
+//             <Header/>
+//             <FlatList
+//             data={data}
+//             renderItem={renderItem}
+//             keyExtractor={item => item.id}
+//             extraData={selectedId}
+//         />
+//         <Footer/>
+        
+//         </SafeAreaView>
+//     )
+// };
+
+// const styles = StyleSheet.create({
+//     container:{
+//         flex:1,
+//         marginTop: StatusBar.currentHeight || 0,
+//     },
+//     item: {
+//         padding: 20,
+//         marginVertical: 8,
+//         marginHorizontal: 16,
+//         flexDirection:"row",
+//     },
+//     imagenPais:{
+//         width:100,
+//         height:100,
+//         alignSelf: 'center',
+//         borderRadius:10,
+//     },
+//     title: {
+//         fontSize: 25,
+//         marginLeft:20,
+//     },
+//     titleGrupo: {
+//         fontSize: 15,
+//         marginLeft:20,
+//     },
+//     header: {
+//         backgroundColor: '#012481',
+//         width: '100vw',
+//         height: 45,
+//         justifyContent: 'center',
+//         alignItems: 'center',
+//         marginBottom: 20,
+//     },
+//     headerText: {
+//         color: '#fff',
+//         fontSize: 18
+//     },
+//     footer: {
+//         backgroundColor: 'white',
+//         width: '100vw',
+//         height: 45,
+//         justifyContent: 'center',
+//         alignItems: 'center',
+//         bottom: 0,
+//     },
+//     footerText: {
+//         color: '#000',
+//         fontSize: 18,
+//     },
+// });
+
+// export default App;
+import React, {useState} from 'react';
+import { SafeAreaView,StyleSheet, Text, FlatList, TouchableOpacity, View,Image, StatusBar, } from 'react-native';
+
+const info =[
+  {
+    id: '1',
+    pais: 'Argentina',
+    imagen: 'https://cdn.icon-icons.com/icons2/1694/PNG/512/arargentinaflag_111670.png',
+    grupo: 'GRUPO A',
+  },
+  {
+    id: '2',
+    pais: 'Colombia',
+    imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUPzCm02Svv-s0bKWJ4__BUIxde6hVDJ9vCg&s',
+    grupo: 'GRUPO B',
+  }, 
+   {
+    id: '3',
+    pais: 'Uruguay',
+    imagen: 'https://static.vecteezy.com/system/resources/previews/002/450/300/non_2x/illustration-of-uruguay-flag-free-vector.jpg',
+    grupo: 'GRUPO C',
+  },
+  {
+    id: '4',
+    pais: 'Brasil',
+    imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKcyPL6fJxG_xZ6zGtb7w5w-qgC4XWBFhHCg&s',
+    grupo: 'GRUPO D',
+  },
+  {
+    id: '5',
+    pais: 'Perú',
+    imagen: 'https://static.magflags.net/media/catalog/product/cache/b756e98438727cbd4415a0b646d85461/P/E/PE-1x1.5.png',
+    grupo: 'GRUPO A',
+  },
+];
+const Item =({item, onPress, backgroundColor, textColor}) =>(
+  <TouchableOpacity onPress={onPress} style={[styles.item, {backgroundColor}]}>
+      <Image  style={styles.imagenPais} source={{uri: item.imagen,}}/>
+    <View>
+    <Text style={[styles.title, {color: textColor}]}>{item.pais}</Text>
+      <Text style={[styles.titleGrupo]}>{item.grupo}</Text>
+    </View>
+  </TouchableOpacity>
+
+);
+
+const Header = () => {
+  return (
+    <View style={styles.header}>
+      <Text style={styles.headerText}>
+        COPA AMERICA 2024
+      </Text>
+    </View>
+  )
+}
+const Footer = () => {
+  return (
+    <View style={styles.footer}>
+      <Text style={styles.footerText}>
+        Hackathon 7
+      </Text>
+    </View>
+  )
+}
+const App = () => {
+  const [selectedId, setSelectedId] = useState();
+  const renderItem =({item}) =>{
+    const backgroundColor = item.id === selectedId ? '#7e7979' : '#edeaea';
+    const color = item.id === selectedId ? 'white' : 'black';
+
+    return(
+      <Item item={item}
+      onPress={() => setSelectedId(item.id)}
+      backgroundColor={backgroundColor}
+      textColor={color}/>
+    )
+  
+  }
+  return (
+    <SafeAreaView style={styles.container}>
+        <Header/>
+      <FlatList
+      data={info}
+      renderItem={renderItem}
+      keyExtractor={item => item.id}
+      extraData={selectedId}
+     />
+<Footer/>
+
+    </SafeAreaView>
+  )
+};
+
+const styles = StyleSheet.create({
+  container:{
+flex:1,
+marginTop: StatusBar.currentHeight || 0,
+  },
+  item: {
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+    flexDirection:"row",
+  },
+  imagenPais:{
+    width:100,
+    height:100,
+    alignSelf: 'center',
+    borderRadius:10,
+  },
+  title: {
+    fontSize: 25,
+    marginLeft:20,
+  },
+  titleGrupo: {
+    fontSize: 15,
+    marginLeft:20,
+  },
+  header: {
+    backgroundColor: '#012481',
+    width: '100vw',
+    height: 45,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20
+  },
+  headerText: {
+    color: '#fff',
+    fontSize: 18
+  },
+  footer: {
+    backgroundColor: 'white',
+    width: '100vw',
+    height: 45,
+    justifyContent: 'center',
+    alignItems: 'center',
+    bottom: 0
+  },
+  footerText: {
+    color: '#000',
+    fontSize: 18
+  },
+});
+
+export default App;
