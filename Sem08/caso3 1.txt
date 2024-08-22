@@ -1,0 +1,163 @@
+import React from 'react';
+import {Image,
+  StyleSheet,
+  Text,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  View,
+} from 'react-native';
+
+const info =[
+  {
+    id: '1',
+    pizza: 'Pepperoni',
+    imagen: 'https://cdn1.vectorstock.com/i/1000x1000/88/10/pizza-icon-vector-1348810.jpg',
+    ingrediente: 'Inserte todos los ingredientes aqui',
+    precio: 'S/ 35.00',
+  },
+  {
+    id: '2',
+    pizza: 'Cuatro Estaciones',
+    imagen: 'https://cdn1.vectorstock.com/i/1000x1000/88/10/pizza-icon-vector-1348810.jpg',
+    ingrediente: 'Inserte todos los ingredientes aqui',
+    precio: 'S/ 45.00',
+  }, 
+   {
+    id: '3',
+    pizza: 'Hawaina',
+    imagen: 'https://cdn1.vectorstock.com/i/1000x1000/88/10/pizza-icon-vector-1348810.jpg',
+    ingrediente: 'Inserte todos los ingredientes aqui',
+    precio: 'S/ 40.00',
+  },
+  {
+    id: '4',
+    pizza: 'Americana',
+    imagen: 'https://cdn1.vectorstock.com/i/1000x1000/88/10/pizza-icon-vector-1348810.jpgs',
+    ingrediente: 'Inserte todos los ingredientes aqui',
+    precio: 'S/ 30.00',
+  },
+  {
+    id: '5',
+    pizza: 'Vegetarian',
+    imagen: 'https://cdn1.vectorstock.com/i/1000x1000/88/10/pizza-icon-vector-1348810.jpg',
+    ingrediente: 'Inserte todos los ingredientes aqui',
+    precio: 'S/ 35.00',
+  }
+  ,
+  {
+    id: '6',
+    pizza: 'Cuatro Estaciones II',
+    imagen: 'https://cdn1.vectorstock.com/i/1000x1000/88/10/pizza-icon-vector-1348810.jpg',
+    ingrediente: 'Inserte todos los ingredientes aqui',
+    precio: 'S/ 45.00',
+  }, 
+   {
+    id: '7',
+    pizza: 'Hawaina II',
+    imagen: 'https://cdn1.vectorstock.com/i/1000x1000/88/10/pizza-icon-vector-1348810.jpg',
+    grupo: 'Inserte todos los ingredientes aqui',
+    precio: 'S/40.00',
+  },
+  {
+    id: '8',
+    pizza: 'Americana II',
+    imagen: 'https://cdn1.vectorstock.com/i/1000x1000/88/10/pizza-icon-vector-1348810.jpg',
+    ingrediente: 'Inserte todos los ingredientes aqui',
+    precio: 'S/ 35.00',
+  },
+  {
+    id: '9',
+    pizza: 'Vegetarian II',
+    imagen: 'https://cdn1.vectorstock.com/i/1000x1000/88/10/pizza-icon-vector-1348810.jpg',
+    ingrediente: 'Inserte todos los ingredientes aqui',
+    precio: 'S/ 35.00',
+  },
+];
+const Header = () => {
+  return (
+    <View style={styles.header}>
+      <Text style={styles.headerText}>
+        PIZZAS
+      </Text>
+    </View>
+  )
+}
+const App = () => {
+  return (
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.scrollView}>
+        <Header/>
+       
+{info.map((item) =>{
+  return(
+    <View style={styles.itemPizza}>
+    <Image  style={styles.imagenPizza} source={{uri: item.imagen,}}/>
+    <View>
+    <Text style={styles.title}>{item.pizza}</Text>
+      <Text style={[styles.titleGrupo]}>{item.ingrediente}</Text>
+      <Text style={styles.titlePrecio}>{item.precio}</Text>
+    </View>
+    
+    </View>
+  );
+})}
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: StatusBar.currentHeight,
+  },
+  itemPizza:{
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+ flexDirection:'row',
+ backgroundColor:'white',
+ borderColor:'green',borderBottomWidth:1,
+ 
+  },
+  scrollView: {
+    marginHorizontal: 20,
+  },
+  text: {
+    fontSize: 42,
+  },
+  imagenPizza:{
+    width:100,
+    height:100,
+    alignSelf: 'center',
+    borderRadius:10,
+  },
+  title: {
+    fontSize: 20,
+    marginLeft:20,
+  },
+  titlePrecio: {
+    fontSize: 20,
+    marginLeft:20,
+    color:'red',
+  },
+  titleGrupo: {
+    fontSize: 12,
+    marginLeft:20,
+  },
+  header: {
+    backgroundColor: '#0b745c',
+    width: '100vw',
+    height: 45,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20
+  },
+  headerText: {
+    color: '#fff',
+    fontSize: 18
+  },
+});
+
+export default App;
