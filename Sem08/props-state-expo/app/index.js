@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import CardWrapper from '../components/CardWrapper'
 
 /*
 
@@ -9,12 +10,24 @@ State (estado): Es un objeto que contiene información o propiedades sobre la ap
 
 */
 
+/*
+CardWrapper: es un componente principal
+Card: es un componente secundario
+*/
+
 export default function index() {
     return (
-        <View>
-            <Text>index</Text>
+        <View style={styles.container}>
+            <CardWrapper/>
         </View>
     )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container:{
+        flex: 1,
+        backgroundColor: 'yellow',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+})
