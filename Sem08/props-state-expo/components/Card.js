@@ -1,11 +1,23 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const Card = () => {
+// Card: es un componente secundario
+
+// const Card = (props) => {
+//     return (
+//         <View>
+//             <Text>{props.name}</Text>
+//             <Text>{props.age}</Text>
+//         </View>
+//     )
+// }
+
+// Podemos utilizar la destructuración para obtener solo las propiedades
+const Card = ({name, age}) => {
     return (
         <View>
-            <Text>Jhon Doe</Text>
-            <Text>30</Text>
+            <Text>{name}</Text>
+            <Text>{age}</Text>
         </View>
     )
 }
