@@ -3,7 +3,7 @@ import React from 'react'
 
 const SettingsScreen = () => {
     return (
-        <View>
+        <View style={styles.container}>
             <Text>SettingsScreen</Text>
         </View>
     )

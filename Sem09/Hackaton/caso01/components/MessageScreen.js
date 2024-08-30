@@ -1,20 +1,20 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const ProfileScreen = () => {
+const MessageScreen = () => {
     return (
         <View style={styles.container}>
-            <Text>ProfileScreen</Text>
+            <Text>MessageScreen</Text>
         </View>
     )
 }
 
-export default ProfileScreen
+export default MessageScreen
 
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor: 'green',
+        backgroundColor: 'yellow',
         alignItems: 'center',
         justifyContent: 'center',
     }

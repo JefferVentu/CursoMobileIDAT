@@ -1,20 +1,20 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const ProfileScreen = () => {
+const ConfiScreen = () => {
     return (
         <View style={styles.container}>
-            <Text>ProfileScreen</Text>
+            <Text>ConfiScreen</Text>
         </View>
     )
 }
 
-export default ProfileScreen
+export default ConfiScreen
 
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor: 'green',
+        backgroundColor: 'peru',
         alignItems: 'center',
         justifyContent: 'center',
     }
