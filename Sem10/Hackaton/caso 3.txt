@@ -1,0 +1,89 @@
+import { StyleSheet, Text, View ,useWindowDimensions } from 'react-native'
+import React from 'react'
+import { TabView, SceneMap ,TabBar} from 'react-native-tab-view';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { AntDesign, Octicons } from '@expo/vector-icons';
+
+
+const FirstRoute = () => (
+  <View style={{ flex: 1, backgroundColor: 'white' }} />
+);
+
+const SecondRoute = () => (
+  <View style={{ flex: 1, backgroundColor: 'yellow' }} />
+);
+const ThirdRoute = () => (
+  <View style={{ flex: 1, backgroundColor: 'purple' }} />
+);
+const FourthRoute = () => (
+  <View style={{ flex: 1, backgroundColor: 'green' }} />
+);
+
+const renderScene = SceneMap({
+  first: FirstRoute,
+  second: SecondRoute,
+  third: ThirdRoute,
+  fourth: FourthRoute,
+});
+const getTabBarIcon = (props) => {
+
+  const {route} = props
+
+    if (route.key === 'first') {
+
+     return <Octicons name='search' size={30} color={'red'}/>
+
+    } 
+    if (route.key === 'second'){
+
+     return <AntDesign name='profile' size={30} color={'black'}/>
+
+    }
+    if (route.key === 'third'){
+
+      return <AntDesign name='shoppingcart' size={30} color={'black'}/>
+ 
+     }
+     if (route.key === 'fourth'){
+
+      return <AntDesign name='user' size={30} color={'black'}/>
+ 
+     }
+}
+
+export default function index() {
+
+  const layout = useWindowDimensions();
+
+  const [index, setIndex] = React.useState(0);
+  const [routes] = React.useState([
+    { key: 'first', title: 'Reciente' },
+    { key: 'second', title: 'Favorito' },
+    { key: 'third', title: 'Compra' },
+    { key: 'fourth', title: 'Usuario' },
+  ]);
+
+  return (
+   
+    <TabView
+    renderTabBar={props =>
+      <TabBar
+          {...props}
+          indicatorStyle={{backgroundColor: 'black'}}
+          renderIcon={
+              props => getTabBarIcon(props)
+          }
+          tabStyle={styles.bubble}
+          labelStyle={styles.noLabel}
+      />
+  }
+      navigationState={{ index, routes }}
+      renderScene={renderScene}
+      onIndexChange={setIndex}
+      initialLayout={{ width: layout.width }}
+    />
+
+  )
+}
+
+const styles = StyleSheet.create({})

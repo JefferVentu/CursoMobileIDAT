@@ -9,7 +9,7 @@ import LoginSVG from '../assets/images/login.svg'
 import React from 'react'
 import { transform } from 'typescript'
 
-const RegisterScreen = () => {
+const RegisterScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.containerSafe}>
         <ScrollView>
@@ -67,14 +67,13 @@ const RegisterScreen = () => {
 
                 <View style={styles.containerLogin}>
                     <Text>Already registered</Text>
-                    <TouchableOpacity onPress={()=>{}}>
+                    <TouchableOpacity onPress={()=>navigation.goBack()}>
                         <Text style={styles.textLogin2}>   Login</Text>
                     </TouchableOpacity>
                 </View>
 
             </View>
         </ScrollView>
-      
     </SafeAreaView>
   )
 }

@@ -10,51 +10,51 @@ import React from 'react'
 import { transform } from 'typescript'
 
 const LoginScreen = () => {
-  return (
-    <SafeAreaView style={styles.containerSafe}>
-      <View style={styles.viewContainer}>
+    return (
+        <SafeAreaView style={styles.containerSafe}>
+            <View style={styles.viewContainer}>
 
-        <View style={styles.viewHeader}>
-            <LoginSVG height ={300} width={300} style = {styles.loginsvg} />
-            <Text style={styles.textLogin}> LOGIN </Text>
-        </View>
+                <View style={styles.viewHeader}>
+                    <LoginSVG height={300} width={300} style={styles.loginsvg} />
+                    <Text style={styles.textLogin}> LOGIN </Text>
+                </View>
 
-        <View style={styles.containerInput} >
-            <MaterialIcons name='alternate-email' size={20} color='purple' style={{marginRight: 8}} />
-            <TextInput placeholder='Email ID' keyboardAppearance='email-address' style={styles.textInput} />
-        </View>
+                <View style={styles.containerInput} >
+                    <MaterialIcons name='alternate-email' size={20} color='purple' style={{ marginRight: 8 }} />
+                    <TextInput placeholder='Email ID' keyboardAppearance='email-address' style={styles.textInput} />
+                </View>
 
-        <View style={styles.containerInput} >
-            <MaterialIcons name='lock' size={20} color='purple' style={{marginRight: 8}} />
-            <TextInput placeholder='Password' secureTextEntry={true} style={styles.textInput} />
-        </View>
+                <View style={styles.containerInput} >
+                    <MaterialIcons name='lock' size={20} color='purple' style={{ marginRight: 8 }} />
+                    <TextInput placeholder='Password' secureTextEntry={true} style={styles.textInput} />
+                </View>
 
-        <TouchableOpacity style={styles.buttonLogin} >
-            <Text style={styles.buttonText} >LOGIN</Text>
-        </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonLogin} >
+                    <Text style={styles.buttonText} >LOGIN</Text>
+                </TouchableOpacity>
 
-        <View style={styles.containerSocial}>
-            <TouchableOpacity style={styles.buttonSocials}>
-                <GoogleSVG height={25} width={25} />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.buttonSocials}>
-                <FacebookSVG height={25} width={25} />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.buttonSocials}>
-                <TwitterSVG height={25} width={25} />
-            </TouchableOpacity>
-        </View>
+                <View style={styles.containerSocial}>
+                    <TouchableOpacity style={styles.buttonSocials}>
+                        <GoogleSVG height={25} width={25} />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttonSocials}>
+                        <FacebookSVG height={25} width={25} />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttonSocials}>
+                        <TwitterSVG height={25} width={25} />
+                    </TouchableOpacity>
+                </View>
 
-        <View style={styles.containerRegister}>
-            <Text>New to the App</Text>
-            <TouchableOpacity>
-                <Text style={styles.textRegister}>     Register</Text>
-            </TouchableOpacity>
-        </View>
+                <View style={styles.containerRegister}>
+                    <Text>New to the App</Text>
+                    <TouchableOpacity>
+                        <Text style={styles.textRegister}>     Register</Text>
+                    </TouchableOpacity>
+                </View>
 
-      </View>
-    </SafeAreaView>
-  )
+            </View>
+        </SafeAreaView>
+    )
 }
 
 export default LoginScreen

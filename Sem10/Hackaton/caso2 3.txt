@@ -1,0 +1,45 @@
+import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import Inicio from '../screens/Inicio';
+import Loading from '../screens/Loading';
+import IniciarSesion from '../screens/IniciarSesion';
+
+const Stack = createNativeStackNavigator();
+
+
+export default function index() {
+  return (
+    <Stack.Navigator initialRouteName='Loading'
+    screenOptions={{
+      headerTintColor:'white',
+      headerStyle: { backgroundColor: 'black' },
+    }}
+    >
+       <Stack.Screen name='Loading' component={Loading}
+       options={{
+        title:'IDAT',
+        headerStyle:{
+          backgroundColor:'black',
+        },
+       }}
+       />
+       <Stack.Screen name='IniciarSesion' component={IniciarSesion}
+        options={{
+          title:'Iniciar Sesión',
+          headerStyle:{
+            backgroundColor:'purple',
+          },
+         }}/>
+      <Stack.Screen name='Inicio' component={Inicio}
+       options={{
+        title:'Inicio',
+        headerStyle:{
+          backgroundColor:'green',
+        },
+       }}/>
+    </Stack.Navigator>
+  )
+}
+
+const styles = StyleSheet.create({})
