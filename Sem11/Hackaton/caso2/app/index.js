@@ -7,7 +7,19 @@ export default function index() {
         <Canvas>
             <mesh>
                 <torusGeometry/>
-                
+                <meshBasicMaterial color='yellow'/>
+            </mesh>
+            <mesh scale={0.5}>
+                <torusGeometry/>
+                <meshBasicMaterial color='pink'/>
+            </mesh>
+            <mesh scale={0.3}>
+                <torusGeometry/>
+                <meshBasicMaterial color='green'/>
+            </mesh>
+            <mesh>
+                <torusGeometry/>
+                <meshBasicMaterial color='purple'/>
             </mesh>
         </Canvas>
     )
