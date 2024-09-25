@@ -50,7 +50,7 @@ export default function index() {
                 <MapViewDirections
                     origin={origin}
                     destination={destination}
-                    apikey='AIzaSyDP7IJ7AYcokgC-HeGvd6cvJ6sbYU4xK1o'
+                    apikey=''
                     strokeColor='red'
                     strokeWidth={3.5}
                 />
