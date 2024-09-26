@@ -12,3 +12,5 @@ USAR:
 	npx expo install expo-location
 - React native reanimated https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/getting-started/
 	npx expo install react-native-reanimated
+- Firebase
+	npm install firebase
