@@ -14,5 +14,4 @@ USAR:
 	npx expo install react-native-reanimated
 - Firebase
 	npm install firebase
-	npm install @react-native-firebase/firestore
-
+Para el proyecto.md
