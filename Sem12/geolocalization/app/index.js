@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import MapView, { Callout, Circle, Marker, Polyline } from 'react-native-maps'
 import MapViewDirections from 'react-native-maps-directions';
+import * as Location from 'expo-location';
 
 const carImage = require('../assets/images/car-icon-png.png');
 
@@ -25,6 +26,23 @@ export default function index() {
         }
     );
 
+    useEffect(() => {
+        (async () => {
+            let { status } = await Location.requestForegroundPermissionsAsync();
+            if (status !== 'granted') {
+                setErrorMsg('Permission to access location was denied');
+                return;
+            }
+            let location = await Location.getCurrentPositionAsync({});
+            const current = {
+                latitude: location.coords.latitude,
+                longitude: location.coords.longitude,
+            }
+
+            setOrigin(current);
+        })();
+    }, []);
+
     return (
         <View style={styles.container}>
             <MapView
@@ -34,7 +52,7 @@ export default function index() {
                 <Marker
                     coordinate={origin}
                     pinColor='skyblue'
-                    image={carImage}
+                    // image={carImage}
                 >
                     <Callout>
                         <Text>Esto es un Callout</Text>
@@ -43,14 +61,14 @@ export default function index() {
                 <Marker
                     coordinate={destination}
                     pinColor='purple'
-                    image={carImage}
+                    // image={carImage}
                 >
                 </Marker>
 
                 <MapViewDirections
                     origin={origin}
                     destination={destination}
-                    apikey=''
+                    apikey='AIzaSyDP7IJ7AYcokgC-HeGvd6cvJ6sbYU4xK1o'
                     strokeColor='red'
                     strokeWidth={3.5}
                 />
