@@ -1,9 +1,9 @@
 import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image, Alert } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { auth, firestore } from '../Firebase'; // Asegúrate de importar auth y firestore
+import { auth, db } from '../Firebase'; // Cambiamos firestore a db
 import { useNavigation } from '@react-navigation/native';
 
-const Login = () => {
+const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
@@ -17,8 +17,8 @@ const Login = () => {
     useEffect(() => {
         const unsubscribe = auth().onAuthStateChanged((user) => {
             if (user) {
-                // Redirige a la pantalla de Login solo si hay un usuario autenticado
-                navigation.replace('Login');
+                // Redirige a la pantalla de Home solo si hay un usuario autenticado
+                navigation.replace('Home');
             }
         });
 
@@ -27,8 +27,8 @@ const Login = () => {
 
     const handleSignup = async () => {
         try {
-            const userCredencials = await auth().createUserWithEmailAndPassword(email, password);
-            const user = userCredencials.user;
+            const userCredentials = await auth().createUserWithEmailAndPassword(email, password);
+            const user = userCredentials.user;
 
             // Actualizar el perfil del usuario con el nombre
             await user.updateProfile({
@@ -36,8 +36,7 @@ const Login = () => {
             });
 
             // Guardar datos adicionales en Firestore
-            await firestore()
-                .collection('users')
+            await db.collection('users')
                 .doc(user.uid) // Usamos el UID del usuario como ID del documento
                 .set({
                     name: name,
@@ -122,7 +121,7 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
 
 const styles = StyleSheet.create({
     container: {

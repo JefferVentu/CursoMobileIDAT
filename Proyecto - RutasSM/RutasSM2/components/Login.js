@@ -1,47 +1,20 @@
-import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image, Alert } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import { auth } from '../Firebase'; // Asegúrate de que el auth provenga correctamente de Firebase.js
-import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image } from 'react-native';
+import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native'; // Importa el hook de navegación
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
-    const navigation = useNavigation();
+    const navigation = useNavigation(); // Usa el hook de navegación
 
     const image = require("../assets/images/LogoRutaSM.png");
 
-    useEffect(() => {
-        const userState = auth.onAuthStateChanged((user) => {
-            if (user) {
-                navigation.replace('Home'); // Redirige a la pantalla Home si el usuario está autenticado
-            }
-        });
-        return userState; // Limpia la suscripción al desmontar
-    }, []);
-
-    const handleLogin = () => {
-        auth.signInWithEmailAndPassword(email, password)
-            .then((userCredentials) => {
-                const user = userCredentials.user;
-                Alert.alert("Bienvenido", "Ha iniciado sesión exitosamente.");
-            })
-            .catch((error) => {
-                if (error.code === 'auth/user-not-found') {
-                    Alert.alert("Error de inicio de sesión", "Usted no se encuentra registrado.");
-                } else if (error.code === 'auth/wrong-password') {
-                    Alert.alert("Error de inicio de sesión", "Contraseña incorrecta.");
-                } else if (error.code === 'auth/invalid-email') {
-                    Alert.alert("Error de inicio de sesión", "Correo electrónico inválido.");
-                } else {
-                    Alert.alert("Error", error.message);
-                }
-            });
+    const goToHome = () => {
+        navigation.navigate('Home');
     };
 
-    // Función para navegar a la pantalla de registro
     const goToRegister = () => {
-        navigation.navigate('Register'); // Cambia 'Register' por el nombre exacto de tu pantalla de registro
+        navigation.navigate('Register');
     };
 
     return (
@@ -51,21 +24,21 @@ const Login = () => {
                 <Text style={styles.title}>RutaSM</Text>
                 <Text style={styles.subtitle}>Ingresa con tu correo:</Text>
             </View>
-            
+
             <View style={styles.inputContainer}>
-                <TextInput 
-                    placeholder='Email' 
+                <TextInput
+                    placeholder='Email'
                     placeholderTextColor={'#8c8c8c'}
                     value={email}
-                    onChangeText={(text) => setEmail(text)} 
+                    onChangeText={(text) => setEmail(text)}
                     style={styles.input}
                 />
-                <TextInput 
-                    placeholder='Contraseña' 
+                <TextInput
+                    placeholder='Contraseña'
                     placeholderTextColor={'#8c8c8c'}
-                    value={password} 
-                    onChangeText={(text) => setPassword(text)} 
-                    style={styles.input} 
+                    value={password}
+                    onChangeText={(text) => setPassword(text)}
+                    style={styles.input}
                     secureTextEntry={true}
                 />
                 <TouchableOpacity style={styles.forgotPassButton}>
@@ -74,18 +47,21 @@ const Login = () => {
             </View>
 
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button} onPress={handleLogin}>
+                <TouchableOpacity style={styles.button} onPress={goToHome}>
                     <Text style={styles.buttonText}>Ingresa</Text>
                 </TouchableOpacity>
-                <Text style={styles.subtitle}>O si eres nuevo aquí...</Text>
-                {/* Cambia el onPress para navegar a la pantalla de registro */}
+                <Text style={styles.subtitle}>¿Aún no tienes una cuenta?</Text>
+
                 <TouchableOpacity style={styles.button} onPress={goToRegister}>
                     <Text style={styles.buttonText}>Regístrate</Text>
                 </TouchableOpacity>
             </View>
+            <View>
+
+            </View>
         </View>
-    );
-};
+    )
+}
 
 export default Login;
 
@@ -142,7 +118,8 @@ const styles = StyleSheet.create({
     },
     subtitle: {
         fontSize: 16,
-        margin: 7,
+        marginTop: 15,
+        margin: 10,
     },
     forgotPassButton: {
         alignItems: 'flex-end',
@@ -151,4 +128,4 @@ const styles = StyleSheet.create({
     forgotPass: {
         color: '#8c8c8c',
     },
-});
+})
