@@ -1,6 +1,6 @@
 import { Alert, Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { collection, query, getDocs, where, addDoc, setDoc } from 'firebase/firestore'
+import { collection, query, getDocs, where, addDoc, setDoc, doc, deleteDoc } from 'firebase/firestore'
 import { db } from '../firebase-config'
 
 export default function index() {
@@ -10,7 +10,7 @@ export default function index() {
         try {
             const docRef = collection(db, 'users')
             await addDoc(docRef, {
-                email: 'some_email@gmail.com',
+                email: 'xdxdxdxd@gmail.com',
                 password: '123456' 
             });
         } catch (error) {
@@ -23,7 +23,7 @@ export default function index() {
     // Operation Read
     const read = async () => {
         const docRef = collection(db, 'users')
-        const q = query(docRef, where('email', '==', 'some_email@gmail.com'));
+        const q = query(docRef, where('email', '==', 'xdxdxdxd@gmail.com'));
         const docData = await getDocs(q);
         if(docData.size==0){
             Alert.alert('NOT FOUNDED');
@@ -39,6 +39,7 @@ export default function index() {
         const docRef = collection(db, 'users')
         const q = query(docRef, where('email', '==', 'xdxdxdxd@gmail.com'));
         const docData = await getDocs(q);
+        let dataId;
         if(docData.size==0){
             Alert.alert('NOT FOUNDED');
         } else{
@@ -46,14 +47,27 @@ export default function index() {
                 dataId = doc.id;
             });
             const docRef = doc(db, 'users');
-            setDoc(docRef, {password:'98345345'}, {merge: true});
+            await deleteDoc(docRef);
             Alert.alert("DATA UPDATE");
         }
     }
 
     // Operation Delete
-    const deleteData = () => {
-
+    const deleteData = async () => {
+        const docRef = collection(db, 'users')
+        const q = query(docRef, where('email', '==', 'xdxdxdxd@gmail.com'));
+        const docData = await getDocs(q);
+        let dataId;
+        if (docData.size == 0){
+            Alert.alert('DATA NOT EXIST','Cant update');
+        } else {
+            docData.forEach((doc)=>{
+                dataId = doc.id;
+            });
+            const docRef = doc(db, 'users');
+            setDoc(docRef, {password:'98345345'}, {merge: true});
+            Alert.alert("DATA UPDATE");
+        }
     }
 
 
