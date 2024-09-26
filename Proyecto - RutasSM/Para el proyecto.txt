@@ -15,4 +15,5 @@ USAR:
 - Firebase
 	npm install firebase
 	npm install @react-native-firebase/firestore
+- AntDesing: https://3x.ant.design/components/icon/
 
