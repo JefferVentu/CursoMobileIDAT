@@ -1,6 +1,5 @@
 USAR:
 
-- npm install @react-navigation/native-stack
 - DRAWER NAVIGATOR: https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/getting-started/
 - React maps https://github.com/react-native-maps/react-native-maps
 - Expo location https://github.com/react-native-maps/react-native-maps
