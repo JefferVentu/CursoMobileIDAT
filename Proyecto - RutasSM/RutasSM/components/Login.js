@@ -1,11 +1,10 @@
-import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { Alert } from 'react-native'; // Para mostrar alertas
 import { auth } from '../Firebase';
 import { useNavigation } from '@react-navigation/native';
 
 const Login = () => {
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -35,29 +34,14 @@ const Login = () => {
                 } else if (error.code === 'auth/wrong-password') {
                     Alert.alert("Error de inicio de sesión", "Contraseña incorrecta.");
                 } else {
-                    Alert.alert("Error", error.message);
+                    Alert.alert("Error", "Revisa los datos ingresados.");
                 }
             });
     };
 
-    const handleSignup = () => {
-        auth()
-            .createUserWithEmailAndPassword(email, password)
-            .then((userCredencials) => {
-                const user = userCredencials.user;
-                Alert.alert("Registro exitoso", "Su cuenta ha sido creada.");
-            })
-            .catch((error) => {
-                if (error.code === 'auth/email-already-in-use') {
-                    Alert.alert("Error de registro", "Usted ya está registrado con ese correo.");
-                } else if (error.code === 'auth/invalid-email') {
-                    Alert.alert("Error de registro", "Correo inválido.");
-                } else if (error.code === 'auth/weak-password') {
-                    Alert.alert("Error de registro", "La contraseña es muy débil.");
-                } else {
-                    Alert.alert("Error", error.message);
-                }
-            });
+    // Función para navegar a la pantalla de registro
+    const goToRegister = () => {
+        navigation.navigate('Register'); // Cambia 'Register' por el nombre exacto de tu pantalla de registro
     };
 
     return (
@@ -73,16 +57,16 @@ const Login = () => {
                     placeholder='Email' 
                     placeholderTextColor={'#8c8c8c'}
                     value={email}
-                    onChangeText={(text)=>setEmail(text)} 
+                    onChangeText={(text) => setEmail(text)} 
                     style={styles.input}
                 />
                 <TextInput 
                     placeholder='Contraseña' 
                     placeholderTextColor={'#8c8c8c'}
                     value={password} 
-                    onChangeText={(text)=>setPassword(text)} 
+                    onChangeText={(text) => setPassword(text)} 
                     style={styles.input} 
-                    secureTextEntry= {true}
+                    secureTextEntry={true}
                 />
                 <TouchableOpacity style={styles.forgotPassButton}>
                     <Text style={styles.forgotPass}>¿Olvidaste tu contraseña?</Text>
@@ -94,35 +78,36 @@ const Login = () => {
                     <Text style={styles.buttonText}>Ingresa</Text>
                 </TouchableOpacity>
                 <Text style={styles.subtitle}>O si eres un nuevo aquí...</Text>
-                <TouchableOpacity style={styles.button} onPress={handleSignup}>
+                {/* Cambia el onPress para navegar a la pantalla de registro */}
+                <TouchableOpacity style={styles.button} onPress={goToRegister}>
                     <Text style={styles.buttonText}>Registrate</Text>
                 </TouchableOpacity>
             </View>
         </View>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
+    container: {
+        flex: 1,
         alignItems: 'center',
-        justifyContent:'center',
+        justifyContent: 'center',
     },
-    titleContainer:{
+    titleContainer: {
         alignItems: 'center',
         marginBottom: 20,
     },
-    title:{
+    title: {
         fontSize: 30,
         fontWeight: 'bold',
         color: '#007BFF',
     },
-    inputContainer:{
-        width:'80%',
+    inputContainer: {
+        width: '80%',
     },
-    input:{
+    input: {
         backgroundColor: '#D9D9D9',
         paddingHorizontal: 15,
         paddingVertical: 10,
@@ -130,41 +115,40 @@ const styles = StyleSheet.create({
         marginTop: 10,
         width: '100%',
     },
-    buttonContainer:{
+    buttonContainer: {
         width: '50%',
         display: 'flex',
-        // flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 20,
     },
-    button:{
+    button: {
         margin: 10,
         backgroundColor: '#007BFF',
         width: 'auto',
         padding: 15,
         borderRadius: 10,
-        alignItems:'center',
+        alignItems: 'center',
     },
-    buttonText:{
+    buttonText: {
         color: 'white',
         fontWeight: 'bold',
         fontSize: 18,
     },
-    image:{
+    image: {
         width: 150,
         height: 90,
         margin: 20,
     },
-    subtitle:{
+    subtitle: {
         fontSize: 16,
         margin: 7,
     },
-    forgotPassButton:{
+    forgotPassButton: {
         alignItems: 'flex-end',
         marginTop: 12,
     },
-    forgotPass:{
-        color:'#8c8c8c'
+    forgotPass: {
+        color: '#8c8c8c',
     },
-})
+});
