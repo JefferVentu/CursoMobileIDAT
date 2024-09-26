@@ -10,7 +10,7 @@ const Login = () => {
     const image = require("../assets/images/LogoRutaSM.png");
 
     const goToHome = () => {
-        navigation.navigate('Home');
+        navigation.navigate('HomeDrawer');
     };
 
     const goToRegister = () => {

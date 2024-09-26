@@ -2,9 +2,9 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AntDesign } from '@expo/vector-icons';
-import VerParaderos from './VerParaderos';
-import PointToPoint from './PointToPoint';
-import SearchRoutes from './SearchRoutes';
+import VerParaderos from '../VerParaderos';
+import PointToPoint from '../PointToPoint';
+import SearchRoutes from '../SearchRoutes';
 
 const Tab = createBottomTabNavigator();
 
@@ -84,3 +84,4 @@ const styles = StyleSheet.create({
         height: '100%',
     },
 });
+

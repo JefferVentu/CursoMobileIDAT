@@ -13,7 +13,7 @@ const Register = () => {
     const image = require("../assets/images/LogoRutaSM.png");
 
     const goToHome = () => {
-        navigation.navigate('Home'); // Navega a la pantalla Home
+        navigation.navigate('HomeDrawer'); // Navega a la pantalla Home
     };
 
     return (
