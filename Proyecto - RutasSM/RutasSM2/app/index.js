@@ -9,8 +9,8 @@ import Historial from '../components/drawer/Historial';
 import RutasGuardadas from '../components/drawer/RutasGuardadas';
 import Settings from '../components/drawer/Settings';
 import Help from '../components/drawer/Help';
-import { getHeaderTitle } from '@react-navigation/elements';
 import CustomDrawerContent from '../components/CustomDrawerContent'; // Importa el contenido personalizado
+import { AntDesign } from '@expo/vector-icons';
 
 
 const Drawer = createDrawerNavigator();
@@ -18,14 +18,52 @@ const Stack = createNativeStackNavigator();
 
 const HomeDrawer = () => {
     return (
+        
         <Drawer.Navigator
             drawerContent={(props) => <CustomDrawerContent {...props} />}
+            screenOptions={{
+                // headerShown: false,
+                drawerStyle: {
+                    flex: 1,
+                    backgroundColor: '#fff', 
+                },
+            }}
         >
-            <Drawer.Screen name="Mapa" component={Home} />
-            <Drawer.Screen name="Historial" component={Historial} />
-            <Drawer.Screen name="Rutas Guardadas" component={RutasGuardadas} />
-            <Drawer.Screen name="Configuración" component={Settings} />
-            <Drawer.Screen name="Ayuda" component={Help} />
+            <Drawer.Screen name="Mapa" component={Home} 
+                options={{
+                    drawerIcon: ({}) => (
+                        <AntDesign name='book' size={20}/>
+                    ),
+                }}
+            />
+            <Drawer.Screen name="Historial" component={Historial} 
+                options={{
+                    drawerIcon: ({}) => (
+                        <AntDesign name='interaction' size={20}/>
+                    ),
+                }}
+            />
+            <Drawer.Screen name="Rutas Guardadas" component={RutasGuardadas} 
+                options={{
+                    drawerIcon: ({}) => (
+                        <AntDesign name='book' size={20}/>
+                    ),
+                }}
+            />
+            <Drawer.Screen name="Configuración" component={Settings} 
+                options={{
+                    drawerIcon: ({}) => (
+                        <AntDesign name='book' size={20}/>
+                    ),
+                }}
+            />
+            <Drawer.Screen name="Ayuda" component={Help} 
+                options={{
+                    drawerIcon: ({}) => (
+                        <AntDesign name='book' size={20}/>
+                    ),
+                }}
+            />
             
         </Drawer.Navigator>
     );

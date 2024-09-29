@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Button, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { View, Button, StyleSheet, TouchableOpacity, Text, SafeAreaView } from 'react-native';
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { useNavigation } from '@react-navigation/native';
 
@@ -11,17 +11,19 @@ const CustomDrawerContent = (props) => {
     };
 
     return (
-        <DrawerContentScrollView {...props} contentContainerStyle={styles.container}>
-            <DrawerItemList {...props} />
+        <SafeAreaView style={styles.container}>
+            <DrawerContentScrollView {...props} contentContainerStyle={styles.container}>
+                <DrawerItemList {...props} />
 
-            <View style={styles.logoutContainer}>
-                <TouchableOpacity style={styles.btn} onPress={handleLogout}>
-                    <Text style={styles.textbtn}>
-                        Cerrar Sesión
-                    </Text>
-                </TouchableOpacity>
-            </View>
-        </DrawerContentScrollView>
+                <View style={styles.logoutContainer}>
+                    <TouchableOpacity style={styles.btn} onPress={handleLogout}>
+                        <Text style={styles.textbtn}>
+                            Cerrar Sesión
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+            </DrawerContentScrollView>
+        </SafeAreaView>
     );
 };
 
@@ -30,17 +32,17 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     logoutContainer: {
-        marginBottom: 20, 
+        marginBottom: 20,
         justifyContent: 'flex-end',
-        flexGrow: 1, 
+        flexGrow: 1,
         alignItems: 'center',
     },
-    btn:{
+    btn: {
         backgroundColor: '#ea2929',
         paddingHorizontal: 60,
         paddingVertical: 10,
     },
-    textbtn:{
+    textbtn: {
         color: 'white',
         fontSize: 20,
     },

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native'
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import MapView, { Callout, Marker } from 'react-native-maps'
 import { AntDesign } from '@expo/vector-icons';
@@ -47,10 +47,20 @@ const PointToPoint = () => {
                 <Text style={styles.tituloText}>¿A dónde vamos?</Text>
             </View>
 
+            <View style={styles.inputContainer}>
+                <AntDesign name="enviromento" size={40} style={styles.icon} color={'#007BFF'} />
+                <TextInput style={styles.input} placeholder='Ingresa el inicio' placeholderTextColor={'gray'}/>
+                <TextInput/>
+            </View>
+            <View style={styles.inputContainer}>
+                <AntDesign name="enviromento" size={40} style={styles.icon} color={'#ea2929'} />
+                <TextInput style={styles.input} placeholder='Ingresa el destino' placeholderTextColor={'gray'}/>
+                <TextInput/>
+            </View>
             <View>
-                <AntDesign name="enviromento" size={20} style={styles.icon} />
-                <TextInput/>
-                <TextInput/>
+                <TouchableOpacity style={styles.button}>
+                    <Text style={styles.textButton}>Ir</Text>
+                </TouchableOpacity>
             </View>
         </View>
     )
@@ -66,7 +76,12 @@ const styles = StyleSheet.create({
     },
     map:{
         width:'100%',
-        height:'65%',
+        height:'55%',
+    },
+    inputContainer:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingHorizontal: 10,
     },
     tituloPuntoPunto: {
         padding: 15,
@@ -79,6 +94,28 @@ const styles = StyleSheet.create({
         color:'white'
     },
     icon:{
-        
+        margin:15,
     },
+    input:{
+        flex: 1,
+        padding: 10, 
+        marginRight: 20,
+        borderBottomWidth: 1, 
+        borderBottomColor: '#ccc',
+        fontSize: 16,
+    },
+    button: {
+        alignItems: 'center',
+        backgroundColor: '#ea2929', 
+        borderRadius: 20, // Bordes redondeados
+        marginTop: 10,
+        paddingVertical: 6, // Espaciado vertical
+        paddingHorizontal: 10,
+        marginHorizontal: '30%',
+    },
+    textButton: {
+        color: 'white',
+        fontSize: 20,
+        fontWeight: 'bold',
+    }
 })
