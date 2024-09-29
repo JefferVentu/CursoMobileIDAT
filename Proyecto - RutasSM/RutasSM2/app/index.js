@@ -11,6 +11,7 @@ import Settings from '../components/drawer/Settings';
 import Help from '../components/drawer/Help';
 import CustomDrawerContent from '../components/CustomDrawerContent'; // Importa el contenido personalizado
 import { AntDesign } from '@expo/vector-icons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
 const Drawer = createDrawerNavigator();
@@ -39,28 +40,28 @@ const HomeDrawer = () => {
             <Drawer.Screen name="Historial" component={Historial} 
                 options={{
                     drawerIcon: ({}) => (
-                        <AntDesign name='interaction' size={20}/>
+                        <Icon name='history' size={20} color="#000" />
                     ),
                 }}
             />
             <Drawer.Screen name="Rutas Guardadas" component={RutasGuardadas} 
                 options={{
                     drawerIcon: ({}) => (
-                        <AntDesign name='book' size={20}/>
+                        <Icon name="save" size={20} color="#000"/>
                     ),
                 }}
             />
             <Drawer.Screen name="Configuración" component={Settings} 
                 options={{
                     drawerIcon: ({}) => (
-                        <AntDesign name='book' size={20}/>
+                        <AntDesign name='setting' size={20}/>
                     ),
                 }}
             />
             <Drawer.Screen name="Ayuda" component={Help} 
                 options={{
                     drawerIcon: ({}) => (
-                        <AntDesign name='book' size={20}/>
+                        <AntDesign name='question' size={20}/>
                     ),
                 }}
             />
