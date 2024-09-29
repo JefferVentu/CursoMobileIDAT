@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
-import MapView, { Callout, Circle, Marker, Polyline } from 'react-native-maps'
+import MapView, { Callout, Marker } from 'react-native-maps'
+import { AntDesign } from '@expo/vector-icons';
 
 const PointToPoint = () => {
     const [origin, setOrigin] = useState(
@@ -40,14 +41,17 @@ const PointToPoint = () => {
                     pinColor='purple'
                 >
                 </Marker>
-
-                {/* <Circle center={origin} radius={2000}/>
-                <Polyline 
-                    coordinates={[origin, destination]}
-                    strokeColor='red'
-                    strokeWidth={5}
-                /> */}
             </MapView>
+
+            <View style={styles.tituloPuntoPunto}>
+                <Text style={styles.tituloText}>¿A dónde vamos?</Text>
+            </View>
+
+            <View>
+                <AntDesign name="enviromento" size={20} style={styles.icon} />
+                <TextInput/>
+                <TextInput/>
+            </View>
         </View>
     )
 }
@@ -57,10 +61,24 @@ export default PointToPoint
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        
+        justifyContent: 'flex-start',
+        backgroundColor: '#FFFFFF',
     },
     map:{
         width:'100%',
-        height:'100%',
+        height:'65%',
+    },
+    tituloPuntoPunto: {
+        padding: 15,
+        alignItems: 'center',
+        backgroundColor: '#007BFF',
+    },
+    tituloText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color:'white'
+    },
+    icon:{
+        
     },
 })
