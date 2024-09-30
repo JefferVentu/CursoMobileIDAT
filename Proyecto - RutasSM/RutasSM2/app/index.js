@@ -1,4 +1,4 @@
-import { StyleSheet, SafeAreaView, Button } from 'react-native';
+import { StyleSheet, SafeAreaView } from 'react-native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -9,7 +9,7 @@ import Historial from '../components/drawer/Historial';
 import RutasGuardadas from '../components/drawer/RutasGuardadas';
 import Settings from '../components/drawer/Settings';
 import Help from '../components/drawer/Help';
-import CustomDrawerContent from '../components/CustomDrawerContent'; // Importa el contenido personalizado
+import CustomDrawerContent from '../components/CustomDrawerContent';
 import { AntDesign } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -24,44 +24,69 @@ const HomeDrawer = () => {
             drawerContent={(props) => <CustomDrawerContent {...props} />}
             screenOptions={{
                 // headerShown: false,
+                drawerActiveTintColor: '#007BFF',  
+                drawerInactiveTintColor: '#000', 
                 drawerStyle: {
                     flex: 1,
                     backgroundColor: '#fff', 
                 },
             }}
         >
-            <Drawer.Screen name="Mapa" component={Home} 
+            <Drawer.Screen
+                name="Mapa"
+                component={Home}
                 options={{
-                    drawerIcon: ({}) => (
-                        <AntDesign name='book' size={20}/>
+                    drawerIcon: ({ color }) => (
+                        <AntDesign
+                            name='book'
+                            size={25}
+                            color={color}
+                        />
                     ),
                 }}
             />
+
             <Drawer.Screen name="Historial" component={Historial} 
                 options={{
-                    drawerIcon: ({}) => (
-                        <Icon name='history' size={20} color="#000" />
+                    drawerIcon: ({color}) => (
+                        <Icon 
+                            name='history' 
+                            size={25} 
+                            color={color}
+                        />
                     ),
                 }}
             />
             <Drawer.Screen name="Rutas Guardadas" component={RutasGuardadas} 
                 options={{
-                    drawerIcon: ({}) => (
-                        <Icon name="save" size={20} color="#000"/>
+                    drawerIcon: ({color}) => (
+                        <Icon 
+                            name="save" 
+                            size={25} 
+                            color={color}
+                        />
                     ),
                 }}
             />
             <Drawer.Screen name="Configuración" component={Settings} 
                 options={{
-                    drawerIcon: ({}) => (
-                        <AntDesign name='setting' size={20}/>
+                    drawerIcon: ({color}) => (
+                        <AntDesign 
+                            name='setting' 
+                            size={25}
+                            color={color}
+                        />
                     ),
                 }}
             />
             <Drawer.Screen name="Ayuda" component={Help} 
                 options={{
-                    drawerIcon: ({}) => (
-                        <AntDesign name='question' size={20}/>
+                    drawerIcon: ({color}) => (
+                        <AntDesign 
+                            name='question' 
+                            size={25}
+                            color={color}
+                        />
                     ),
                 }}
             />
@@ -86,7 +111,7 @@ export default function Index() {
                 /> 
                 <Stack.Screen 
                     
-                    name='HomeDrawer' // Cambia el nombre para usarlo más adelante
+                    name='HomeDrawer'
                     component={HomeDrawer} 
                     options={{ headerShown: false }}
                 /> 

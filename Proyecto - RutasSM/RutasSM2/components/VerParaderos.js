@@ -72,7 +72,10 @@ const VerParaderos = () => {
                     <AntDesign name="enviromento" size={20} style={styles.icon} />
                     <Text>P. Biblioteca</Text>
                 </TouchableOpacity>
+                <View style={styles.space}>
+                </View>
             </ScrollView>
+            
         </View>
     );
 };
@@ -114,4 +117,7 @@ const styles = StyleSheet.create({
         marginRight: 10,
         color: 'black',  
     },
+    space:{
+        margin: 20,
+    }
 });

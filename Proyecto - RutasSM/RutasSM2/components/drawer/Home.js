@@ -25,7 +25,7 @@ const Home = () => {
                 name="Ver Paraderos" 
                 component={VerParaderos}
                 options={{
-                    tabBarLabel: 'Ver Paraderos',
+                    tabBarLabel: 'Información',
                     tabBarLabelStyle: {fontWeight: 'bold', fontSize: 15, marginBottom:10},
                     tabBarActiveTintColor: '#007BFF',
                     tabBarInactiveTintColor: '#007BFF',
@@ -57,7 +57,7 @@ const Home = () => {
                 name="Buscar Rutas" 
                 component={SearchRoutes}
                 options={{
-                    tabBarLabel: 'Buscar Rutas',
+                    tabBarLabel: 'Ver Paraderos',
                     tabBarLabelStyle: {fontWeight: 'bold', fontSize: 15, marginBottom:10},
                     tabBarActiveTintColor: '#007BFF',
                     tabBarInactiveTintColor: '#007BFF',
