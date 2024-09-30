@@ -1,14 +1,19 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
 const RutasGuardadas = () => {
   return (
-    <View>
-      <Text>RutasGuardadas</Text>
-    </View>
+    <ScrollView style={styles.container}>
+
+    </ScrollView>
   )
 }
 
 export default RutasGuardadas
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+})

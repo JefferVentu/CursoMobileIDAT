@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, SafeAreaView } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AntDesign } from '@expo/vector-icons';
@@ -10,15 +10,18 @@ const Tab = createBottomTabNavigator();
 
 const Home = () => {
     return (
+        <SafeAreaView style={{ flex: 1 }}>
         <Tab.Navigator
             screenOptions={{
                 tabBarStyle: {
-                    height: 100, 
+                    height: 70, 
+                    paddingBottom: 0,
                 },
                 tabBarIconStyle: {
                     width: 60, // Ajusta el tamaño del área de los íconos
                     height: 60,
                 },
+                
             }}
         >
             <Tab.Screen 
@@ -34,7 +37,7 @@ const Home = () => {
                     tabBarIcon:() => (
                         <AntDesign name='car' size={40} style={{color: '#007BFF'}} />
                     ),
-                    headerShown: false, // Ocultar el título en la parte superior
+                    headerShown: false, 
                 }}
             />
             <Tab.Screen 
@@ -70,6 +73,7 @@ const Home = () => {
                 }} 
             />
         </Tab.Navigator>
+        </SafeAreaView>
     )
 }
 

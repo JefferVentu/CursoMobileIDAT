@@ -1,4 +1,4 @@
-import { StyleSheet, SafeAreaView } from 'react-native';
+import { StyleSheet, SafeAreaView, StatusBar } from 'react-native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -23,13 +23,21 @@ const HomeDrawer = () => {
             drawerContent={(props) => <CustomDrawerContent {...props} />}
             screenOptions={{
                 // headerShown: false,
-                drawerActiveTintColor: '#007BFF',  
-                drawerInactiveTintColor: '#000', 
+                drawerActiveTintColor: '#007BFF',
+                drawerInactiveTintColor: '#000',
                 drawerStyle: {
                     flex: 1,
-                    backgroundColor: '#fff', 
+                    backgroundColor: '#fff',
                 },
-                
+                headerStatusBarHeight: 0,
+                headerStyle: {
+                    backgroundColor: '#007BFF',
+                },
+                headerTitleStyle: {
+                    color: 'white',
+                    fontSize: 22,
+                },
+                headerTintColor: 'white',
             }}
         >
             <Drawer.Screen
@@ -43,93 +51,90 @@ const HomeDrawer = () => {
                             color={color}
                         />
                     ),
-                    headerStyle: {
-                        backgroundColor: '#007BFF',  // Cambia el color del fondo del header
-                    },
-                    headerTitleStyle: {
-                        color: 'white',  // Cambia el color del texto del título
-                    },
-                    headerStatusBarHeight: 0,
+                    
                 }}
             />
 
-            <Drawer.Screen name="Historial" component={Historial} 
+            <Drawer.Screen name="Historial" component={Historial}
                 options={{
-                    drawerIcon: ({color}) => (
-                        <Icon 
-                            name='history' 
-                            size={25} 
-                            color={color}
-                        />
-                    ),
-                }}
-            />
-            <Drawer.Screen name="Rutas Guardadas" component={RutasGuardadas} 
-                options={{
-                    drawerIcon: ({color}) => (
-                        <Icon 
-                            name="save" 
-                            size={25} 
-                            color={color}
-                        />
-                    ),
-                }}
-            />
-            <Drawer.Screen name="Configuración" component={Settings} 
-                options={{
-                    drawerIcon: ({color}) => (
-                        <AntDesign 
-                            name='setting' 
+                    drawerIcon: ({ color }) => (
+                        <Icon
+                            name='history'
                             size={25}
                             color={color}
                         />
                     ),
                 }}
             />
-            <Drawer.Screen name="Ayuda" component={Help} 
+            <Drawer.Screen name="Rutas Guardadas" component={RutasGuardadas}
                 options={{
-                    drawerIcon: ({color}) => (
-                        <AntDesign 
-                            name='question' 
+                    drawerIcon: ({ color }) => (
+                        <Icon
+                            name="save"
                             size={25}
                             color={color}
                         />
                     ),
                 }}
             />
-            
+            <Drawer.Screen name="Configuración" component={Settings}
+                options={{
+                    drawerIcon: ({ color }) => (
+                        <AntDesign
+                            name='setting'
+                            size={25}
+                            color={color}
+                        />
+                    ),
+                }}
+            />
+            <Drawer.Screen name="Ayuda" component={Help}
+                options={{
+                    drawerIcon: ({ color }) => (
+                        <AntDesign
+                            name='question'
+                            size={25}
+                            color={color}
+                        />
+                    ),
+                }}
+            />
+
         </Drawer.Navigator>
     );
 };
 
 export default function Index() {
     return (
-        <SafeAreaView style={styles.container}>
-            <Stack.Navigator>
-                <Stack.Screen 
-                    options={{ headerShown: false }}
-                    name='Login' 
-                    component={Login}
-                />
-                <Stack.Screen 
-                    options={{ headerShown: false }}
-                    name='Register' 
-                    component={Register}
-                /> 
-                <Stack.Screen 
-                    
-                    name='HomeDrawer'
-                    component={HomeDrawer} 
-                    options={{ headerShown: false }}
-                /> 
-            </Stack.Navigator>
-        </SafeAreaView>
+        <>
+            <StatusBar hidden={false} />
+            <SafeAreaView style={styles.container}>
+                <Stack.Navigator>
+                    <Stack.Screen
+                        options={{ headerShown: false }}
+                        name='Login'
+                        component={Login}
+                    />
+                    <Stack.Screen
+                        options={{ headerShown: false }}
+                        name='Register'
+                        component={Register}
+                    />
+                    <Stack.Screen
+                        name='HomeDrawer'
+                        component={HomeDrawer}
+                        options={{ headerShown: false }}
+                    />
+                </Stack.Navigator>
+            </SafeAreaView>
+        </>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        margin: 0,
+        margin:0,
+        padding:0,
     },
 });

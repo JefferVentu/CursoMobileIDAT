@@ -8,8 +8,8 @@ const SearchRoutes = () => {
     const [origin, setOrigin] = useState({
         latitude: -12.056887099527414, 
         longitude: -77.08245481271341 ,
-        latitudeDelta: 0.010,
-        longitudeDelta: 0.010,
+        latitudeDelta: 0.008,
+        longitudeDelta: 0.008,
     });
 
     return (
