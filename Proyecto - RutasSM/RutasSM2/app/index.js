@@ -111,9 +111,10 @@ export default function Index() {
             <SafeAreaView style={styles.container}>
                 <Stack.Navigator>
                     <Stack.Screen
-                        options={{ headerShown: false }}
+                        options={{ headerShown: false, gestureEnabled: false }}
                         name='Login'
                         component={Login}
+                        
                     />
                     <Stack.Screen
                         options={{ headerShown: false }}
@@ -123,7 +124,7 @@ export default function Index() {
                     <Stack.Screen
                         name='HomeDrawer'
                         component={HomeDrawer}
-                        options={{ headerShown: false }}
+                        options={{ headerShown: false, gestureEnabled: false }}
                     />
                 </Stack.Navigator>
             </SafeAreaView>
