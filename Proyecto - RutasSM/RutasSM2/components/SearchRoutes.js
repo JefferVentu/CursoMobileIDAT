@@ -6,8 +6,8 @@ import { AntDesign } from '@expo/vector-icons';
 const SearchRoutes = () => {
 
     const [origin, setOrigin] = useState({
-        latitude: -12.056887099527414, 
-        longitude: -77.08245481271341 ,
+        latitude: -12.056958019534452,  
+        longitude: -77.08297922060264,
         latitudeDelta: 0.008,
         longitudeDelta: 0.008,
     });

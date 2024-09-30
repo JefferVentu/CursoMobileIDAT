@@ -8,8 +8,8 @@ const VerParaderos = () => {
     const [origin, setOrigin] = useState({
         latitude: -12.056469727385394, 
         longitude: -77.08442460632264,
-        latitudeDelta: 0.015,
-        longitudeDelta: 0.015,
+        latitudeDelta: 0.010,
+        longitudeDelta: 0.010,
     });
 
     return (
@@ -18,14 +18,6 @@ const VerParaderos = () => {
                 style={styles.map}
                 initialRegion={origin}
             >
-                <Marker
-                    coordinate={origin}
-                    pinColor='skyblue'
-                >
-                    <Callout>
-                        <Text>Esto es un Callout</Text>
-                    </Callout>
-                </Marker> 
             </MapView>
 
             <View style={styles.tituloParadero}>

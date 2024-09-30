@@ -28,7 +28,7 @@ const PointToPoint = () => {
                 style={styles.map}
                 initialRegion={origin}
             >
-                <Marker
+                {/* <Marker
                     coordinate={origin}
                     pinColor='skyblue'
                 >
@@ -40,7 +40,7 @@ const PointToPoint = () => {
                     coordinate={destination}
                     pinColor='purple'
                 >
-                </Marker>
+                </Marker> */}
             </MapView>
 
             <View style={styles.tituloPuntoPunto}>
