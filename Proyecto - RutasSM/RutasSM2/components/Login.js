@@ -1,6 +1,8 @@
-import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image, Alert } from 'react-native';
 import React, { useState } from 'react';
-import { useNavigation } from '@react-navigation/native'; // Importa el hook de navegación
+import { useNavigation } from '@react-navigation/native';
+import { auth } from '../firebase-config';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -9,8 +11,26 @@ const Login = () => {
 
     const image = require("../assets/images/LogoRutaSM.png");
 
-    const goToHome = () => {
-        navigation.navigate('HomeDrawer');
+    const loginUser = async () => {
+        if (!email || !password) {
+            Alert.alert("Error: Llene todos los campos");
+            return;
+        }
+    
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+            Alert.alert("Inicio de sesión exitoso");
+            navigation.navigate('HomeDrawer');
+        } catch (error) {
+            console.error("Error en el inicio de sesión:", error); 
+            if (error.code === 'auth/user-not-found') {
+                Alert.alert("Error: Usuario no encontrado");
+            } else if (error.code === 'auth/wrong-password') {
+                Alert.alert("Error: Contraseña incorrecta");
+            } else {
+                Alert.alert("Error: " + error.message);
+            }
+        }
     };
 
     const goToRegister = () => {
@@ -47,7 +67,7 @@ const Login = () => {
             </View>
 
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button} onPress={goToHome}>
+                <TouchableOpacity style={styles.button} onPress={loginUser}>
                     <Text style={styles.buttonText}>Ingresa</Text>
                 </TouchableOpacity>
                 <Text style={styles.subtitle}>¿Aún no tienes una cuenta?</Text>

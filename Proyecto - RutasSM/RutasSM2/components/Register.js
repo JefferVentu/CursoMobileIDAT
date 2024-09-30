@@ -1,6 +1,9 @@
-import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image, Alert } from 'react-native';
 import React, { useState } from 'react';
-import { useNavigation } from '@react-navigation/native'; // Importa el hook de navegación
+import { useNavigation } from '@react-navigation/native';
+import { collection, addDoc } from 'firebase/firestore';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { db, auth } from '../firebase-config';
 
 const Register = () => {
     const [email, setEmail] = useState("");
@@ -8,12 +11,35 @@ const Register = () => {
     const [name, setName] = useState("");
     const [lastname, setLastname] = useState("");
     const [numberphone, setPhone] = useState("");
-    const navigation = useNavigation(); // Usa el hook de navegación
+    const navigation = useNavigation();
 
     const image = require("../assets/images/LogoRutaSM.png");
 
-    const goToHome = () => {
-        navigation.navigate('HomeDrawer'); // Navega a la pantalla Home
+    const createUser = async () => {
+        if (!email || !password || !name || !lastname || !numberphone) {
+            Alert.alert("Llene todos los campos");
+            return;
+        }
+
+        try {
+            // Crear el usuario en Firebase Authentication
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            // Guardar datos en Firestore
+            await addDoc(collection(db, 'users'), {
+                uid: user.uid,
+                email: email,
+                name: name,
+                lastname: lastname,
+                numberphone: numberphone
+            });
+
+            Alert.alert("Usuario registrado correctamente");
+            navigation.navigate('HomeDrawer');
+        } catch (error) {
+            Alert.alert("Error al registrar el usuario", error.message);
+        }
     };
 
     return (
@@ -33,7 +59,7 @@ const Register = () => {
                     onChangeText={setEmail}
                     style={styles.input}
                 />
-                <Text style={styles.subtext}>Contraseña: </Text>
+                <Text style={styles.subtext}>Contraseña:</Text>
                 <TextInput
                     placeholder='Contraseña'
                     placeholderTextColor={'#8c8c8c'}
@@ -58,7 +84,7 @@ const Register = () => {
                     onChangeText={setLastname}
                     style={styles.input}
                 />
-                <Text style={styles.subtext}>Ingresa tu número de celular: </Text>
+                <Text style={styles.subtext}>Ingresa tu número de celular:</Text>
                 <TextInput
                     placeholder='Celular'
                     placeholderTextColor={'#8c8c8c'}
@@ -69,7 +95,7 @@ const Register = () => {
             </View>
 
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button} onPress={goToHome}>
+                <TouchableOpacity style={styles.button} onPress={createUser}>
                     <Text style={styles.buttonText}>Registrarme</Text>
                 </TouchableOpacity>
             </View>
@@ -78,7 +104,6 @@ const Register = () => {
 }
 
 export default Register;
-
 
 const styles = StyleSheet.create({
     container: {
