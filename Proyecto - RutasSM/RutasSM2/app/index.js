@@ -19,7 +19,6 @@ const Stack = createNativeStackNavigator();
 
 const HomeDrawer = () => {
     return (
-        
         <Drawer.Navigator
             drawerContent={(props) => <CustomDrawerContent {...props} />}
             screenOptions={{
@@ -30,6 +29,7 @@ const HomeDrawer = () => {
                     flex: 1,
                     backgroundColor: '#fff', 
                 },
+                
             }}
         >
             <Drawer.Screen
@@ -43,6 +43,13 @@ const HomeDrawer = () => {
                             color={color}
                         />
                     ),
+                    headerStyle: {
+                        backgroundColor: '#007BFF',  // Cambia el color del fondo del header
+                    },
+                    headerTitleStyle: {
+                        color: 'white',  // Cambia el color del texto del título
+                    },
+                    headerStatusBarHeight: 0,
                 }}
             />
 
