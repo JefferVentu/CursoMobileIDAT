@@ -45,7 +45,10 @@ const CustomDrawerContent = (props) => {
         try {
             await signOut(auth);  // Cierra la sesión en Firebase
             console.log('Sesión cerrada correctamente');
-            navigation.replace('Login');  // Redirige al login después de cerrar sesión
+            navigation.reset({
+                index: 0,
+                routes: [{ name: 'Login' }],
+            });
         } catch (error) {
             console.error('Error al cerrar sesión:', error.message);
         }
